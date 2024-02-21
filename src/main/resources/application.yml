@@ -1,0 +1,37 @@
+server:
+  port: 9996
+spring:
+    datasource:
+      url: jdbc:h2:mem:localdb;NON_KEYWORDS=user
+      username: sa
+      password: password
+      driver-class-name: org.h2.Driver
+    jpa:
+      hibernate:
+        ddl-auto: create-drop
+      database-platform: org.hibernate.dialect.H2Dialect
+      defer-datasource-initialization: true
+      show-sql: true
+      properties:
+        hibernate:
+          format_sql: false
+    h2:
+      console:
+        enabled: true
+        settings:
+          web-allow-others: false
+    jackson:
+      default-property-inclusion: non_null
+
+quota-limiter:
+  request-limit: 5
+  time-window-minutes: 1440
+
+repository:
+  day-time:
+    start:
+      hour: 9
+      minute: 0
+    end:
+      hour: 17
+      minute: 0
